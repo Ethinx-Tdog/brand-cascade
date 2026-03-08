@@ -27,7 +27,7 @@ serve(async (req) => {
     if (type === "new_application") {
       // Email to applicant
       emails.push({
-        from: "ETHINX <onboarding@resend.dev>",
+        from: "ETHINX <noreply@ethinx.com>",
         to: email,
         subject: "ETHINX Partner Application Received",
         html: `
