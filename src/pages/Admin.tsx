@@ -7,7 +7,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
-import { Loader2, Shield, CheckCircle, XCircle, Clock, FileText } from "lucide-react";
+import { Loader2, Shield, CheckCircle, XCircle, Clock, FileText, LogOut, ArrowLeft } from "lucide-react";
 
 type Application = {
   id: string;
@@ -129,9 +129,26 @@ const Admin = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-8 flex items-center gap-3">
-          <Shield className="h-8 w-8 text-primary" />
-          <h1 className="text-3xl font-bold">Partner Applications</h1>
+        <div className="mb-8 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Shield className="h-8 w-8 text-primary" />
+            <h1 className="text-3xl font-bold">Partner Applications</h1>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="sm" onClick={() => navigate("/")} className="text-muted-foreground">
+              <ArrowLeft className="h-4 w-4 mr-1" /> Back to site
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={async () => {
+                await supabase.auth.signOut();
+                navigate("/login", { replace: true });
+              }}
+            >
+              <LogOut className="h-4 w-4 mr-1" /> Sign Out
+            </Button>
+          </div>
         </div>
 
         {/* Stats */}
