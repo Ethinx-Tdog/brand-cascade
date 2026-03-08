@@ -1,4 +1,5 @@
-import { Check } from "lucide-react";
+import { Check, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useFadeIn } from "@/hooks/useFadeIn";
 import featureBranding from "@/assets/feature-branding.jpg";
 import featureAiContent from "@/assets/feature-ai-content.jpg";
@@ -10,9 +11,11 @@ interface BlockProps {
   bullets: string[];
   image: string;
   reverse?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
-const Block = ({ heading, description, bullets, image, reverse }: BlockProps) => {
+const Block = ({ heading, description, bullets, image, reverse, ctaLabel, ctaHref }: BlockProps) => {
   const ref = useFadeIn();
   return (
     <div
@@ -37,6 +40,13 @@ const Block = ({ heading, description, bullets, image, reverse }: BlockProps) =>
             </li>
           ))}
         </ul>
+        {ctaLabel && ctaHref && (
+          <Button variant="ghost-green" size="sm" className="mt-5" asChild>
+            <a href={ctaHref} target="_blank" rel="noopener noreferrer">
+              {ctaLabel} <ExternalLink className="ml-1 h-3.5 w-3.5" />
+            </a>
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -50,6 +60,8 @@ const WhatYouGetSection = () => (
         description="Fully white-labeled dashboard with your logo, colors, and domain. Your clients never see ETHINX."
         bullets={["Custom domain", "Your branding", "Your pricing", "Your client portal"]}
         image={featureBranding}
+        ctaLabel="See Platform"
+        ctaHref="https://pro-clip-gen.lovable.app"
       />
       <Block
         heading="AI-Powered Content at Scale"
@@ -57,12 +69,16 @@ const WhatYouGetSection = () => (
         bullets={["60-second video generation", "30+ ad variants per campaign", "Automated email sequences", "Landing page builder"]}
         image={featureAiContent}
         reverse
+        ctaLabel="Explore Creator System"
+        ctaHref="https://creator-blueprint-builder.lovable.app"
       />
       <Block
         heading="Built-In Revenue Engine"
         description="Set your own prices. Keep 70% of every sale. We handle the tech, infrastructure, and updates."
         bullets={["You set pricing", "70/30 revenue split (you keep 70%)", "Recurring SaaS revenue", "No inventory or fulfillment"]}
         image={featureRevenue}
+        ctaLabel="See Results"
+        ctaHref="https://ethinx-win-showcase.lovable.app"
       />
     </div>
   </section>

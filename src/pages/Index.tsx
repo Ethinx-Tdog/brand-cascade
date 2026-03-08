@@ -5,6 +5,7 @@ import PartnerTiersSection from "@/components/PartnerTiersSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import RevenueCalculatorSection from "@/components/RevenueCalculatorSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import EcosystemSection from "@/components/EcosystemSection";
 import FaqSection from "@/components/FaqSection";
 import ApplicationFormSection from "@/components/ApplicationFormSection";
 import Footer from "@/components/Footer";
@@ -19,6 +20,7 @@ const Index = () => (
     <HowItWorksSection />
     <RevenueCalculatorSection />
     <TestimonialsSection />
+    <EcosystemSection />
     <FaqSection />
     <ApplicationFormSection />
     <Footer />
