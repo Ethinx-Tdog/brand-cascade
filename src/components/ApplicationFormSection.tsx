@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { useFadeIn } from "@/hooks/useFadeIn";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const clientOptions = ["1-10", "11-50", "51-200", "200+"];
 const budgetOptions = ["Under $5K", "$5-20K", "$20-50K", "$50K+"];
@@ -11,6 +12,7 @@ const tierOptions = ["Founding", "Growth", "Enterprise"];
 const ApplicationFormSection = () => {
   const ref = useFadeIn();
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     agencyName: "",
     yourName: "",
@@ -36,9 +38,31 @@ const ApplicationFormSection = () => {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    
+    setIsSubmitting(true);
+    
+    const { error } = await supabase.from("partner_applications").insert({
+      agency_name: form.agencyName.trim(),
+      contact_name: form.yourName.trim(),
+      email: form.email.trim().toLowerCase(),
+      website: form.website.trim(),
+      current_clients: form.clients,
+      monthly_budget: form.budget,
+      why_partner: form.why.trim(),
+      preferred_tier: form.tier,
+    });
+    
+    setIsSubmitting(false);
+    
+    if (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Supabase error:", error);
+      return;
+    }
+    
     setSubmitted(true);
     toast.success("Application submitted! We'll be in touch within 24 hours.");
   };

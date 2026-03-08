@@ -184,6 +184,33 @@ export type Database = {
           },
         ]
       }
+      enrollments: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          source_page: string | null
+          tier: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          source_page?: string | null
+          tier?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          source_page?: string | null
+          tier?: string
+        }
+        Relationships: []
+      }
       errors: {
         Row: {
           context: Json | null
@@ -568,6 +595,33 @@ export type Database = {
           },
         ]
       }
+      member_progress: {
+        Row: {
+          created_at: string
+          current_week: number
+          email: string
+          id: string
+          last_accessed: string
+          modules_completed: string[]
+        }
+        Insert: {
+          created_at?: string
+          current_week?: number
+          email: string
+          id?: string
+          last_accessed?: string
+          modules_completed?: string[]
+        }
+        Update: {
+          created_at?: string
+          current_week?: number
+          email?: string
+          id?: string
+          last_accessed?: string
+          modules_completed?: string[]
+        }
+        Relationships: []
+      }
       microproducts: {
         Row: {
           active: boolean
@@ -902,6 +956,39 @@ export type Database = {
             referencedColumns: ["user_id"]
           },
         ]
+      }
+      video_requests: {
+        Row: {
+          created_at: string
+          duration: string
+          email: string
+          id: string
+          platform: string
+          status: string
+          tone: string
+          topic: string
+        }
+        Insert: {
+          created_at?: string
+          duration: string
+          email: string
+          id?: string
+          platform: string
+          status?: string
+          tone: string
+          topic: string
+        }
+        Update: {
+          created_at?: string
+          duration?: string
+          email?: string
+          id?: string
+          platform?: string
+          status?: string
+          tone?: string
+          topic?: string
+        }
+        Relationships: []
       }
       worker_heartbeat: {
         Row: {
