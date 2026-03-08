@@ -60,6 +60,8 @@ const WhatYouGetSection = () => (
         description="Fully white-labeled dashboard with your logo, colors, and domain. Your clients never see ETHINX."
         bullets={["Custom domain", "Your branding", "Your pricing", "Your client portal"]}
         image={featureBranding}
+        ctaLabel="See Platform"
+        ctaHref="https://pro-clip-gen.lovable.app"
       />
       <Block
         heading="AI-Powered Content at Scale"
@@ -67,12 +69,16 @@ const WhatYouGetSection = () => (
         bullets={["60-second video generation", "30+ ad variants per campaign", "Automated email sequences", "Landing page builder"]}
         image={featureAiContent}
         reverse
+        ctaLabel="Explore Creator System"
+        ctaHref="https://creator-blueprint-builder.lovable.app"
       />
       <Block
         heading="Built-In Revenue Engine"
         description="Set your own prices. Keep 70% of every sale. We handle the tech, infrastructure, and updates."
         bullets={["You set pricing", "70/30 revenue split (you keep 70%)", "Recurring SaaS revenue", "No inventory or fulfillment"]}
         image={featureRevenue}
+        ctaLabel="See Results"
+        ctaHref="https://ethinx-win-showcase.lovable.app"
       />
     </div>
   </section>
