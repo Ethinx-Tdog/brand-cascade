@@ -11,6 +11,8 @@ interface BlockProps {
   bullets: string[];
   image: string;
   reverse?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 const Block = ({ heading, description, bullets, image, reverse }: BlockProps) => {
