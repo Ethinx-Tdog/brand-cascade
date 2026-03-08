@@ -7,7 +7,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
-import { Loader2, Shield, CheckCircle, XCircle, Clock, FileText } from "lucide-react";
+import { Loader2, Shield, CheckCircle, XCircle, Clock, FileText, LogOut, ArrowLeft } from "lucide-react";
 
 type Application = {
   id: string;
