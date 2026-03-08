@@ -12,6 +12,8 @@ const scrollToHow = () => {
 
 const HeroSection = () => {
   const ref = useFadeIn();
+  const { ref: progressRef, width: progressWidth } = useAnimatedProgress(62, 1500);
+  const { ref: counterRef, value: spotsCount } = useCountUp(31, 1500);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
