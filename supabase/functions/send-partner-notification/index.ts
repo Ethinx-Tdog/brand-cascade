@@ -80,22 +80,29 @@ serve(async (req) => {
       });
     }
 
-    const results = await Promise.all(
-      emails.map((emailData) =>
-        fetch("https://api.resend.com/emails", {
+    const results = [];
+    for (const emailData of emails) {
+      try {
+        const r = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${RESEND_API_KEY}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(emailData),
-        }).then(async (r) => {
-          const body = await r.json();
-          if (!r.ok) throw new Error(`Resend error [${r.status}]: ${JSON.stringify(body)}`);
-          return body;
-        })
-      )
-    );
+        });
+        const body = await r.json();
+        if (!r.ok) {
+          console.error(`Resend error for ${emailData.to}: ${JSON.stringify(body)}`);
+          results.push({ to: emailData.to, error: body });
+        } else {
+          results.push({ to: emailData.to, success: true, ...body });
+        }
+      } catch (e) {
+        console.error(`Failed to send to ${emailData.to}:`, e);
+        results.push({ to: emailData.to, error: String(e) });
+      }
+    }
 
     return new Response(JSON.stringify({ success: true, results }), {
       status: 200,
