@@ -149,6 +149,39 @@ export type Database = {
         }
         Relationships: []
       }
+      dfy_orders: {
+        Row: {
+          business_name: string | null
+          business_type: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          payment_plan: string | null
+          status: string
+        }
+        Insert: {
+          business_name?: string | null
+          business_type?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          payment_plan?: string | null
+          status?: string
+        }
+        Update: {
+          business_name?: string | null
+          business_type?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          payment_plan?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       digital_originals: {
         Row: {
           created_at: string | null
@@ -752,6 +785,48 @@ export type Database = {
             referencedColumns: ["user_id"]
           },
         ]
+      }
+      partner_applications: {
+        Row: {
+          agency_name: string
+          contact_name: string
+          created_at: string
+          current_clients: string
+          email: string
+          id: string
+          monthly_budget: string
+          preferred_tier: string
+          status: string
+          website: string
+          why_partner: string
+        }
+        Insert: {
+          agency_name: string
+          contact_name: string
+          created_at?: string
+          current_clients: string
+          email: string
+          id?: string
+          monthly_budget: string
+          preferred_tier: string
+          status?: string
+          website: string
+          why_partner: string
+        }
+        Update: {
+          agency_name?: string
+          contact_name?: string
+          created_at?: string
+          current_clients?: string
+          email?: string
+          id?: string
+          monthly_budget?: string
+          preferred_tier?: string
+          status?: string
+          website?: string
+          why_partner?: string
+        }
+        Relationships: []
       }
       project_stripe_config: {
         Row: {
