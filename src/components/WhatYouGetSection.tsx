@@ -15,7 +15,7 @@ interface BlockProps {
   ctaHref?: string;
 }
 
-const Block = ({ heading, description, bullets, image, reverse }: BlockProps) => {
+const Block = ({ heading, description, bullets, image, reverse, ctaLabel, ctaHref }: BlockProps) => {
   const ref = useFadeIn();
   return (
     <div
@@ -40,6 +40,13 @@ const Block = ({ heading, description, bullets, image, reverse }: BlockProps) =>
             </li>
           ))}
         </ul>
+        {ctaLabel && ctaHref && (
+          <Button variant="ghost-green" size="sm" className="mt-5" asChild>
+            <a href={ctaHref} target="_blank" rel="noopener noreferrer">
+              {ctaLabel} <ExternalLink className="ml-1 h-3.5 w-3.5" />
+            </a>
+          </Button>
+        )}
       </div>
     </div>
   );
