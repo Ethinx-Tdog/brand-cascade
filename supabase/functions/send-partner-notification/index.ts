@@ -64,7 +64,7 @@ serve(async (req) => {
       });
     } else if (type === "approved") {
       emails.push({
-        from: "ETHINX <onboarding@resend.dev>",
+        from: "ETHINX <noreply@ethinx.com>",
         to: email,
         subject: "Welcome to the ETHINX Partner Program!",
         html: `
