@@ -22,6 +22,7 @@ const Index = () => (
     <FaqSection />
     <ApplicationFormSection />
     <Footer />
+    <ScrollToTop />
   </div>
 );
 
