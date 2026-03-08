@@ -102,38 +102,64 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="border-t border-border bg-background px-4 pb-4 pt-2 md:hidden">
-          <div className="flex flex-col gap-1">
-            {navLinks.map((l) => (
-              <button
-                key={l.href}
-                onClick={() => handleNav(l.href)}
-                className="rounded-lg px-3 py-2.5 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-border bg-background md:hidden"
+          >
+            <div className="flex flex-col gap-1 px-4 pb-4 pt-2">
+              {navLinks.map((l, i) => (
+                <motion.button
+                  key={l.href}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.04, duration: 0.2 }}
+                  onClick={() => handleNav(l.href)}
+                  className="rounded-lg px-3 py-2.5 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  {l.label}
+                </motion.button>
+              ))}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.16, duration: 0.2 }}
+                className="mt-3 px-3 text-xs font-medium uppercase tracking-wider text-primary"
               >
-                {l.label}
-              </button>
-            ))}
-            <p className="mt-3 px-3 text-xs font-medium uppercase tracking-wider text-primary">Ecosystem</p>
-            {ecosystemLinks.map((app) => (
-              <a
-                key={app.label}
-                href={app.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                Ecosystem
+              </motion.p>
+              {ecosystemLinks.map((app, i) => (
+                <motion.a
+                  key={app.label}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 + i * 0.04, duration: 0.2 }}
+                  href={app.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  <span className="text-primary">{app.icon}</span>
+                  {app.label}
+                </motion.a>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.2 }}
               >
-                <span className="text-primary">{app.icon}</span>
-                {app.label}
-              </a>
-            ))}
-            <Button variant="neon" size="sm" className="mt-2 w-full sm:hidden" onClick={() => { setOpen(false); scrollToForm(); }}>
-              Apply Now
-            </Button>
-          </div>
-        </div>
-      )}
+                <Button variant="neon" size="sm" className="mt-2 w-full sm:hidden" onClick={() => { setOpen(false); scrollToForm(); }}>
+                  Apply Now
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
