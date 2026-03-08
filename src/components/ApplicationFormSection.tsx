@@ -64,8 +64,23 @@ const ApplicationFormSection = () => {
       return;
     }
     
+    // Send notification emails
+    supabase.functions.invoke("send-partner-notification", {
+      body: {
+        type: "new_application",
+        agency_name: form.agencyName.trim(),
+        contact_name: form.yourName.trim(),
+        email: form.email.trim().toLowerCase(),
+        website: form.website.trim(),
+        current_clients: form.clients,
+        monthly_budget: form.budget,
+        why_partner: form.why.trim(),
+        preferred_tier: form.tier,
+      },
+    });
+    
     setSubmitted(true);
-    toast.success("Application submitted! We'll be in touch within 24 hours.");
+    toast.success("Application submitted! Check your email for confirmation.");
   };
 
   const update = (key: string, val: string) => {
