@@ -1,6 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Calculator } from "lucide-react";
 import { useFadeIn } from "@/hooks/useFadeIn";
+
+function useAnimatedNumber(target: number, duration = 600) {
+  const [display, setDisplay] = useState(target);
+  const prev = useRef(target);
+
+  useEffect(() => {
+    const from = prev.current;
+    const diff = target - from;
+    if (diff === 0) return;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setDisplay(Math.round(from + eased * diff));
+      if (p < 1) requestAnimationFrame(tick);
+      else prev.current = target;
+    };
+    requestAnimationFrame(tick);
+  }, [target, duration]);
+
+  return display;
+}
 
 const RevenueCalculatorSection = () => {
   const [clients, setClients] = useState(25);
@@ -11,6 +33,10 @@ const RevenueCalculatorSection = () => {
   const annualRevenue = monthlyRevenue * 12;
   const platformCost = 200;
   const netProfit = monthlyRevenue - platformCost;
+
+  const animMonthly = useAnimatedNumber(monthlyRevenue);
+  const animAnnual = useAnimatedNumber(annualRevenue);
+  const animNet = useAnimatedNumber(netProfit);
 
   return (
     <section id="calculator" className="py-24">
@@ -64,11 +90,11 @@ const RevenueCalculatorSection = () => {
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             <div className="rounded-lg border border-border bg-muted/50 p-4 text-center">
               <p className="text-xs text-muted-foreground uppercase tracking-wider">Monthly Revenue</p>
-              <p className="mt-1 text-2xl font-bold text-primary">${monthlyRevenue.toLocaleString()}</p>
+              <p className="mt-1 text-2xl font-bold text-primary">${animMonthly.toLocaleString()}</p>
             </div>
             <div className="rounded-lg border border-border bg-muted/50 p-4 text-center">
               <p className="text-xs text-muted-foreground uppercase tracking-wider">Annual Revenue</p>
-              <p className="mt-1 text-2xl font-bold text-primary">${annualRevenue.toLocaleString()}</p>
+              <p className="mt-1 text-2xl font-bold text-primary">${animAnnual.toLocaleString()}</p>
             </div>
             <div className="rounded-lg border border-border bg-muted/50 p-4 text-center">
               <p className="text-xs text-muted-foreground uppercase tracking-wider">ETHINX Platform Cost</p>
@@ -76,7 +102,7 @@ const RevenueCalculatorSection = () => {
             </div>
             <div className="rounded-lg border border-primary/30 bg-primary/5 p-4 text-center glow-green">
               <p className="text-xs text-muted-foreground uppercase tracking-wider">Your Net Profit</p>
-              <p className="mt-1 text-2xl font-bold text-primary">${netProfit.toLocaleString()}/mo</p>
+              <p className="mt-1 text-2xl font-bold text-primary">${animNet.toLocaleString()}/mo</p>
             </div>
           </div>
         </div>

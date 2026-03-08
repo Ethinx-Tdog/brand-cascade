@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Shield, TrendingUp, Crown } from "lucide-react";
-import { useFadeIn } from "@/hooks/useFadeIn";
+import { useFadeIn, useAnimatedProgress, useCountUp } from "@/hooks/useFadeIn";
 
 const scrollToForm = () => {
   document.getElementById("apply")?.scrollIntoView({ behavior: "smooth" });
@@ -12,6 +12,8 @@ const scrollToHow = () => {
 
 const HeroSection = () => {
   const ref = useFadeIn();
+  const { ref: progressRef, width: progressWidth } = useAnimatedProgress(62, 1500);
+  const { ref: counterRef, value: spotsCount } = useCountUp(31, 1500);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
@@ -38,14 +40,14 @@ const HeroSection = () => {
         </div>
 
         {/* Progress bar */}
-        <div className="mx-auto mt-14 max-w-md">
+        <div className="mx-auto mt-14 max-w-md" ref={progressRef}>
           <p className="mb-3 text-sm text-muted-foreground">
             Currently onboarding <span className="font-semibold text-foreground">50 founding partners</span>
           </p>
           <div className="h-3 w-full overflow-hidden rounded-full bg-muted">
-            <div className="h-full rounded-full bg-primary transition-all" style={{ width: "62%" }} />
+            <div className="h-full rounded-full bg-primary" style={{ width: `${progressWidth}%`, transition: "none" }} />
           </div>
-          <p className="mt-2 text-xs text-muted-foreground">31 of 50 spots filled</p>
+          <p className="mt-2 text-xs text-muted-foreground" ref={counterRef}>{spotsCount} of 50 spots filled</p>
         </div>
 
         {/* Tier badges */}
