@@ -50,9 +50,14 @@ const TestimonialsSection = () => {
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-8 md:grid-cols-3">
           {testimonials.map((t) => (
-            <div
+            <motion.div
               key={t.name}
-              className="group relative flex flex-col rounded-lg border border-border bg-card p-6 transition-shadow hover:glow-green"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: testimonials.indexOf(t) * 0.15 }}
+              whileHover={{ y: -6, boxShadow: "0 0 25px hsl(153 100% 50% / 0.15)" }}
+              className="group relative flex flex-col rounded-lg border border-border bg-card p-6"
             >
               {/* Quote icon */}
               <Quote className="mb-4 h-8 w-8 text-primary/30" />
