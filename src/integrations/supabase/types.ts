@@ -149,6 +149,39 @@ export type Database = {
         }
         Relationships: []
       }
+      dfy_orders: {
+        Row: {
+          business_name: string | null
+          business_type: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          payment_plan: string | null
+          status: string
+        }
+        Insert: {
+          business_name?: string | null
+          business_type?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          payment_plan?: string | null
+          status?: string
+        }
+        Update: {
+          business_name?: string | null
+          business_type?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          payment_plan?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       digital_originals: {
         Row: {
           created_at: string | null
@@ -183,6 +216,33 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      enrollments: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          source_page: string | null
+          tier: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          source_page?: string | null
+          tier?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          source_page?: string | null
+          tier?: string
+        }
+        Relationships: []
       }
       errors: {
         Row: {
@@ -568,6 +628,33 @@ export type Database = {
           },
         ]
       }
+      member_progress: {
+        Row: {
+          created_at: string
+          current_week: number
+          email: string
+          id: string
+          last_accessed: string
+          modules_completed: string[]
+        }
+        Insert: {
+          created_at?: string
+          current_week?: number
+          email: string
+          id?: string
+          last_accessed?: string
+          modules_completed?: string[]
+        }
+        Update: {
+          created_at?: string
+          current_week?: number
+          email?: string
+          id?: string
+          last_accessed?: string
+          modules_completed?: string[]
+        }
+        Relationships: []
+      }
       microproducts: {
         Row: {
           active: boolean
@@ -698,6 +785,48 @@ export type Database = {
             referencedColumns: ["user_id"]
           },
         ]
+      }
+      partner_applications: {
+        Row: {
+          agency_name: string
+          contact_name: string
+          created_at: string
+          current_clients: string
+          email: string
+          id: string
+          monthly_budget: string
+          preferred_tier: string
+          status: string
+          website: string
+          why_partner: string
+        }
+        Insert: {
+          agency_name: string
+          contact_name: string
+          created_at?: string
+          current_clients: string
+          email: string
+          id?: string
+          monthly_budget: string
+          preferred_tier: string
+          status?: string
+          website: string
+          why_partner: string
+        }
+        Update: {
+          agency_name?: string
+          contact_name?: string
+          created_at?: string
+          current_clients?: string
+          email?: string
+          id?: string
+          monthly_budget?: string
+          preferred_tier?: string
+          status?: string
+          website?: string
+          why_partner?: string
+        }
+        Relationships: []
       }
       project_stripe_config: {
         Row: {
@@ -902,6 +1031,39 @@ export type Database = {
             referencedColumns: ["user_id"]
           },
         ]
+      }
+      video_requests: {
+        Row: {
+          created_at: string
+          duration: string
+          email: string
+          id: string
+          platform: string
+          status: string
+          tone: string
+          topic: string
+        }
+        Insert: {
+          created_at?: string
+          duration: string
+          email: string
+          id?: string
+          platform: string
+          status?: string
+          tone: string
+          topic: string
+        }
+        Update: {
+          created_at?: string
+          duration?: string
+          email?: string
+          id?: string
+          platform?: string
+          status?: string
+          tone?: string
+          topic?: string
+        }
+        Relationships: []
       }
       worker_heartbeat: {
         Row: {
