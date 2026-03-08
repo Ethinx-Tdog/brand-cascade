@@ -36,7 +36,8 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Button variant="neon" size="sm" onClick={scrollToForm} className="hidden sm:inline-flex">Apply Now</Button>
           <button
             onClick={() => setOpen(!open)}

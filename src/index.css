@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  .dark {
     --background: 0 0% 4%;
     --foreground: 0 0% 100%;
 
@@ -36,6 +37,38 @@
 
     --gold: 43 100% 50%;
   }
+
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 6.7%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 6.7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 6.7%;
+
+    --primary: 153 100% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 153 60% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 33%;
+
+    --accent: 0 0% 93%;
+    --accent-foreground: 0 0% 6.7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 153 100% 30%;
+
+    --gold: 43 100% 45%;
+  }
 }
 
 @layer base {
@@ -45,6 +78,15 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  /* Smooth theme transition */
+  body,
+  .bg-background,
+  .bg-card,
+  .bg-muted,
+  .bg-accent,
+  .bg-popover {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
 }
 
@@ -60,6 +102,12 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+}
+
+/* Light mode: keep CTA buttons neon green with black text */
+.light .btn-neon-override {
+  background-color: hsl(153 100% 50%);
+  color: hsl(0 0% 0%);
 }
 
 /* Fade-in animation for intersection observer */
