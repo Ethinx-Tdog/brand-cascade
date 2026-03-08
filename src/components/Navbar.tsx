@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const scrollToForm = () => {
   document.getElementById("apply")?.scrollIntoView({ behavior: "smooth" });
