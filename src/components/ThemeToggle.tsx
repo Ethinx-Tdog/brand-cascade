@@ -1,6 +1,5 @@
 import { Sun, Moon, Monitor } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
-import type { Theme } from "./ThemeProvider";
 
 const modes: { value: "light" | "dark" | "system"; icon: typeof Sun }[] = [
   { value: "light", icon: Sun },
