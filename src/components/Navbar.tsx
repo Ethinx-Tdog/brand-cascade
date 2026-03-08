@@ -61,23 +61,31 @@ const Navbar = () => {
             >
               Ecosystem <ChevronDown className={`h-3.5 w-3.5 transition-transform ${ecoOpen ? "rotate-180" : ""}`} />
             </button>
-            {ecoOpen && (
-              <div className="absolute right-0 top-full mt-2 w-56 rounded-lg border border-border bg-card p-1.5 shadow-xl">
-                {ecosystemLinks.map((app) => (
-                  <a
-                    key={app.label}
-                    href={app.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-primary/10 hover:text-foreground"
-                  >
-                    <span className="text-primary">{app.icon}</span>
-                    {app.label}
-                    <ExternalLink className="ml-auto h-3 w-3 opacity-40" />
-                  </a>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {ecoOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
+                  className="absolute right-0 top-full mt-2 w-56 rounded-lg border border-border bg-card p-1.5 shadow-xl"
+                >
+                  {ecosystemLinks.map((app) => (
+                    <a
+                      key={app.label}
+                      href={app.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-primary/10 hover:text-foreground"
+                    >
+                      <span className="text-primary">{app.icon}</span>
+                      {app.label}
+                      <ExternalLink className="ml-auto h-3 w-3 opacity-40" />
+                    </a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
