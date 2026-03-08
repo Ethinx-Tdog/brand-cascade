@@ -10,7 +10,10 @@ const Footer = () => (
         <a href="#" className="transition-colors hover:text-foreground">Contact</a>
         <a href="#" className="transition-colors hover:text-foreground">Partner Login</a>
       </div>
-      <p className="text-xs text-muted-foreground">© 2025 ETHINX Systems. All rights reserved.</p>
+      <div className="flex flex-col items-center gap-1 sm:items-end">
+        <p className="text-xs text-muted-foreground">© 2025 ETHINX Systems. All rights reserved.</p>
+        <a href="https://ethinx-win-showcase.lovable.app" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground transition-colors hover:text-foreground">Part of the ETHINX ecosystem</a>
+      </div>
     </div>
   </footer>
 );
