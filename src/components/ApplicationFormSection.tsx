@@ -44,7 +44,8 @@ const ApplicationFormSection = () => {
     
     setIsSubmitting(true);
     
-    const { error } = await supabase.from("partner_applications").insert({
+    // Use type assertion for new table not yet in generated types
+    const { error } = await (supabase.from("partner_applications" as any) as any).insert({
       agency_name: form.agencyName.trim(),
       contact_name: form.yourName.trim(),
       email: form.email.trim().toLowerCase(),
