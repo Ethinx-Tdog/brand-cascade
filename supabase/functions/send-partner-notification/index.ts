@@ -43,7 +43,7 @@ serve(async (req) => {
 
       // Email to admin
       emails.push({
-        from: "ETHINX System <onboarding@resend.dev>",
+        from: "ETHINX System <noreply@ethinx.com>",
         to: "troy@ethinx.com",
         subject: `New Partner Application: ${agency_name}`,
         html: `
