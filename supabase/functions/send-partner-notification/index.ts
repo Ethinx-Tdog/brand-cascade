@@ -27,7 +27,7 @@ serve(async (req) => {
     if (type === "new_application") {
       // Email to applicant
       emails.push({
-        from: "ETHINX <onboarding@resend.dev>",
+        from: "ETHINX <noreply@ethinx.com>",
         to: email,
         subject: "ETHINX Partner Application Received",
         html: `
@@ -43,7 +43,7 @@ serve(async (req) => {
 
       // Email to admin
       emails.push({
-        from: "ETHINX System <onboarding@resend.dev>",
+        from: "ETHINX System <noreply@ethinx.com>",
         to: "troy@ethinx.com",
         subject: `New Partner Application: ${agency_name}`,
         html: `
@@ -64,7 +64,7 @@ serve(async (req) => {
       });
     } else if (type === "approved") {
       emails.push({
-        from: "ETHINX <onboarding@resend.dev>",
+        from: "ETHINX <noreply@ethinx.com>",
         to: email,
         subject: "Welcome to the ETHINX Partner Program!",
         html: `
