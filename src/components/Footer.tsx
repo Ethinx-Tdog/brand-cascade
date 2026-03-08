@@ -9,6 +9,7 @@ const Footer = () => (
         <a href="#" className="transition-colors hover:text-foreground">Terms</a>
         <a href="#" className="transition-colors hover:text-foreground">Contact</a>
         <a href="#" className="transition-colors hover:text-foreground">Partner Login</a>
+        <a href="/login" className="transition-colors hover:text-foreground">Sign In</a>
         <a href="/admin" className="transition-colors hover:text-foreground">Admin</a>
       </div>
       <div className="flex flex-col items-center gap-1 sm:items-end">

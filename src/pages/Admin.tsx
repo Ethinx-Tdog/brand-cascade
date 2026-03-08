@@ -44,13 +44,13 @@ const Admin = () => {
   const checkAdminAndLoad = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) {
-      navigate("/");
+      navigate("/login", { replace: true });
       return;
     }
 
     const { data: isAdmin } = await supabase.rpc("is_admin", { p_user_id: session.user.id });
     if (!isAdmin) {
-      navigate("/");
+      navigate("/", { replace: true });
       return;
     }
 
