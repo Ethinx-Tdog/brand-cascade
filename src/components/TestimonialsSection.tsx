@@ -94,7 +94,7 @@ const TestimonialsSection = () => {
                 </p>
                 <p className="text-xs text-muted-foreground">{t.role}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
