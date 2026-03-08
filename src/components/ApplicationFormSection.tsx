@@ -168,8 +168,12 @@ const ApplicationFormSection = () => {
             </div>
           </div>
 
-          <Button variant="neon" size="xl" className="w-full" type="submit">
-            <Send className="mr-2 h-5 w-5" /> Submit Application
+          <Button variant="neon" size="xl" className="w-full" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Submitting...</>
+            ) : (
+              <><Send className="mr-2 h-5 w-5" /> Submit Application</>
+            )}
           </Button>
 
           <p className="text-center text-xs text-muted-foreground">
