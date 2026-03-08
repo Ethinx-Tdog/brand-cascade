@@ -1,4 +1,5 @@
-import { Check } from "lucide-react";
+import { Check, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useFadeIn } from "@/hooks/useFadeIn";
 import featureBranding from "@/assets/feature-branding.jpg";
 import featureAiContent from "@/assets/feature-ai-content.jpg";
