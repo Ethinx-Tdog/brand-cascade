@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const scrollToForm = () => {
   document.getElementById("apply")?.scrollIntoView({ behavior: "smooth" });
@@ -35,7 +36,8 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Button variant="neon" size="sm" onClick={scrollToForm} className="hidden sm:inline-flex">Apply Now</Button>
           <button
             onClick={() => setOpen(!open)}
