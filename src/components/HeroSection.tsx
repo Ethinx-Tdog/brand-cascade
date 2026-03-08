@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Shield, TrendingUp, Crown } from "lucide-react";
-import { useFadeIn } from "@/hooks/useFadeIn";
+import { useFadeIn, useAnimatedProgress, useCountUp } from "@/hooks/useFadeIn";
 
 const scrollToForm = () => {
   document.getElementById("apply")?.scrollIntoView({ behavior: "smooth" });
